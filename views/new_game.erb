@@ -1,0 +1,15 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<% if @visitor %>
+		Hello, <%= @visitor %>!
+		<% else %>
+			<form action="/new_game">
+				What's your name?
+				<input type="text" name="name">
+				<input type="submit">
+			</form>
+		<% end %>
+	</body>
+</html>
