@@ -7,3 +7,6 @@ Feature: Starting the game
 		Given I am on the homepage
 		When I follow "New Game"
 		Then I should see "What's your name?"
+		Given I am on the new_game page
+		When I click on submit button
+		Then I am on the Player 1 page
