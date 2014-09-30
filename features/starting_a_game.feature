@@ -3,10 +3,13 @@ Feature: Starting the game
 	As a nostalgic player
 	I want to start a new game
 
-	Scenario: Registering
+	Scenario: Registering part 1
 		Given I am on the homepage
-		When I follow "New Game"
+		When I follow "Start a New Game"
 		Then I should see "What's your name?"
-		Given I am on the new_game page
+
+	Scenario: Registering part 2	
+		Given I am on the new game page
 		When I click on submit button
-		Then I am on the Player 1 page
+		Then I should be registered as Player 1
+		And I should see "Register Player 2" button

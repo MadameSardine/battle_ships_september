@@ -1,22 +1,35 @@
 require 'sinatra/base'
+require_relative 'game'
+require_relative 'player'
 
 class BattleShips < Sinatra::Base
 	set :views, settings.root + '/../views/'
+  set :public_folder, settings.root + '/../public/'
+  enable :sessions
+
+  GAME = Game.new
+
   get '/' do
-    # 'Hello BattleShips!'
+    @player1 = GAME.player1.name unless GAME.player1.nil?
+    @name = session[:me]
     erb :index
   end
 
   get '/new_game' do
-  	@name = params[:name]
+  	@name = session[:something]
   	erb :new_game
   end
 
-  get '/new_game/player1' do
-  	@name = params[:name]
-  	erb :new_game_player1
+  post'/new_player' do
+    player = Player.new
+    player.name =params[:player_name]
+    session[:me] = params[:player_name]
+    GAME.add_player(player)
+    
+    redirect '/'
   end
 
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
+

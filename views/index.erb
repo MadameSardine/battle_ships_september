@@ -1,7 +1,13 @@
-<html>
-	<head>
-	</head>
-	<body>
-		<a href="/new_game">New Game</a>
-	</body>
-</html>
+<!-- <nav><a href="/new_game">Start a new game</a></nav> -->
+
+<% if @player1 %>
+	<ul>
+		<li><a href="/new_game">Start a new game</a></li>
+		<li><a href="/new_game">Register Player 2</a></li>
+	</ul>
+	<h1> <%= @player1 %>, you are Player 1, ready to play?</h1>
+<% else %>
+	<ul>
+		<li><a href="/new_game">Start a new game</a></li>
+	</ul>
+<% end %>
