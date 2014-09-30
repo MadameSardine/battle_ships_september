@@ -5,7 +5,11 @@
 		<li><a href="/new_game">Start a new game</a></li>
 		<li><a href="/new_game">Register Player 2</a></li>
 	</ul>
-	<h1> <%= @player1 %>, you are Player 1, ready to play?</h1>
+	<% if @player1 == "" %>
+		<h1> You are Player 1, ready to play?</h1>
+		<% else %>
+		<h1> <%= @player1 %>, you are Player 1, ready to play?</h1>
+	<% end %>
 <% else %>
 	<ul>
 		<li><a href="/new_game">Start a new game</a></li>

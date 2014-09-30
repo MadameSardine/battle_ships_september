@@ -19,12 +19,19 @@ When(/^I click on submit button$/) do
 end
 
 Then(/^I should be registered as Player (\d+)$/) do |text|
-   expect(page).to have_content("you are Player 1")
+   expect(page).to have_content("Player 1")
 end
 
 Then(/^I should see "(.*?)" button$/) do |arg1|
   expect(page).to have_content("Register Player 2")
 end
 
+When(/^I don't input my name$/) do
+ 
+end
+
+Then(/^I should be registered as Player (\d+) with a default name$/) do |arg1|
+    expect(page).to have_content("You are Player 1")
+end
 
 
