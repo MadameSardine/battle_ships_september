@@ -11,6 +11,7 @@ class BattleShips < Sinatra::Base
 
   get '/' do
     @player1 = GAME.player1.name unless GAME.player1.nil?
+    @player2 = GAME.player2.name unless GAME.player2.nil?
     @name = session[:me]
     erb :index
   end
@@ -25,7 +26,8 @@ class BattleShips < Sinatra::Base
     player.name =params[:player_name]
     session[:me] = params[:player_name]
     GAME.add_player(player)
-    
+    puts player.inspect
+    puts GAME.inspect
     redirect '/'
   end
 
